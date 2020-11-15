@@ -18,7 +18,7 @@ export default function UserItem({
   // data
 }) {
   return (
-    <div className="user" onClick={onClick}>
+    <div className="user" >
       <View
         className="user__section"
         display="flex"
@@ -31,7 +31,7 @@ export default function UserItem({
           </View>
         ) : null}
 
-        <View pv={pv} ph={ph}>
+        <View pv={pv} ph={ph} onClick={onClick}>
           <Text textAlign={textAlign} Component="p" fontSize={1.6}>
             {name}
           </Text>
