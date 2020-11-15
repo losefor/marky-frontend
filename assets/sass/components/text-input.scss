@@ -1,0 +1,48 @@
+.input-cont{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    position: relative;
+    height: 30px;
+    display: inline-block;
+    &__label{
+        font-size: 1.2rem;
+        // background-color: red;
+        width: 100px;
+        text-align: right;
+        padding-right: 10px;
+        color: $color-dark;
+    }
+    input{
+        @include absolute ;
+        border-radius: 20px;
+        border: thin solid #ccc; 
+        padding: 0 10px;
+        padding-right: 32px;
+        color: rgb(116, 116, 116);
+        width: 100%;
+        direction: rtl;
+        transition: .3s;
+        font-size: 1.6rem;
+        &:focus{
+            border-color: darkgray;
+            background-color: rgb(250, 250, 250);
+        }
+    }
+
+    svg{
+        position: absolute;
+        right: 10px;
+        // left: 0;
+        bottom: 0;
+        top: 7px;
+        color:#ccc;
+        // border-left: thin solid #ccc;
+        
+        font-size: 1.6rem;
+        z-index: 2;
+
+    }
+}

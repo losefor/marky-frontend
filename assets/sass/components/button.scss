@@ -1,0 +1,43 @@
+.button{
+    width: 100%;
+    border-radius: 8px;
+    padding: 6px 20px;
+    border:none;    
+    font-size: 1.6rem;
+    font-family: 'Tajawal' , sans-serif;
+    font-weight: 500;
+    transition: .3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &--warning{
+        background-color: $color-gold2;
+        color: darken($color-gold2, 60%) ;
+        &:hover{
+            background-color: lighten($color-gold2,  10%);
+        }
+    }
+
+    &--danger{
+        background-color: $color-danger;
+        color: white ;
+        &:hover{
+            background-color: lighten($color-danger,  10%);
+        }
+    }
+
+    &--success{
+        background-color: $color-success;
+        color: darken($color-success, 40%) ;
+        &:hover{
+            background-color: lighten($color-success,  10%);
+        }
+    }
+
+    &--rounded{
+    border-radius: 20px;
+    }
+}
+

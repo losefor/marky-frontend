@@ -1,0 +1,71 @@
+.alert {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 10px;
+  font-family: monospace;
+  font-size: 2rem;
+  transform: translateY(200%);
+  transition: .3s;
+  position: fixed;
+  bottom: 10px;
+  // font-size: 1.6rem;
+  width: 300px;
+  &__close-btn{
+      cursor: pointer;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    span {
+      padding: 0 10px;
+      font-size: 1.2rem;
+      font-family: 'Tajawal';
+    }
+  }
+  svg {
+    width: 20px;
+  }
+}
+
+.alert--danger {
+  background-color: $color-danger;
+  svg {
+    color: darken($color-danger, 30%);
+  }
+  span {
+    color: darken($color-danger, 80%);
+  }
+}
+
+.alert--warning {
+  background-color: $color-warning;
+  svg {
+    color: darken($color-warning, 30%);
+  }
+  .alert__text {
+    color: darken($color-warning, 80%);
+  }
+}
+
+.alert--success {
+  background-color: $color-success;
+  svg {
+    color: darken($color-success, 30%);
+  }
+  div{
+
+      span {
+          color: darken($color-success, 80%);
+        }
+    }
+}
+
+.alert--open{
+    transform: translateY(0) !important;
+
+}

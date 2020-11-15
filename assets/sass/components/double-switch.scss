@@ -1,0 +1,44 @@
+.check {
+  width: 80px;
+  height: 30px;
+  box-shadow: 0 0 20px #ccc;
+  border-radius: 20px;
+  background-color: #ccc;
+  position: relative;
+  transition: 0.3s;
+  &:hover {
+    // box-shadow: 0 0 30px #ccc;
+  }
+  &::after {
+    content: "";
+    @include absolute;
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  &--success {
+    background-color: $color-success;
+  box-shadow: 0 0 10px $color-success;
+
+    &::after {
+      transform: translatex(51px);
+    }
+  }
+
+  &--null {
+    &::after {
+      transform: translatex(25px);
+    }
+  }
+
+  &--danger {
+    background-color: $color-danger;
+  box-shadow: 0 0 10px $color-danger;
+
+    &::after {
+        transform: translatex(-1px);
+      }
+  }
+}

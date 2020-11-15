@@ -1,0 +1,14 @@
+.index{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    &__text{
+        // background-color: red;
+        text-align: center;
+        font-size: 1.6rem;
+        text-decoration: none !important ;
+        color: black;
+    }
+}

@@ -1,0 +1,28 @@
+.back-button {
+  background-color: $color-dark;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f3f3f3;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  svg {
+    transition: 0.3s;
+  }
+
+  &:hover {
+    background-color: darken($color-dark, 10%);
+    svg {
+      transform: translateX(-3px);
+    }
+  }
+}
