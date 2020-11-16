@@ -20,8 +20,8 @@ export default function add() {
     name: "",
     email: "",
     phoneNumber: "",
-    department: "",
-    stage: "",
+    department: "computerScince",
+    stage: 1,
   };
 
   const validationSchema = Yup.object().shape({
@@ -32,9 +32,9 @@ export default function add() {
     email: Yup.string()
       .email("يرجى التاكد من الايميل")
       .required("الايميل الخاص بالطالب مطلوب"),
-    phoneNumber: Yup.string().min(11).max(11).required("required"),
-    stage: Yup.object().required("stage is required"),
-    department: Yup.object().required("required"),
+    phoneNumber: Yup.string().min(11).max(11).required("رقم الهاتف مطلوب"),
+    stage: Yup.object().required("المرحلة مطلوبة"),
+    department: Yup.object().required("القسم مطلوب"),
   });
 
   const handleSubmit = async (data) => {

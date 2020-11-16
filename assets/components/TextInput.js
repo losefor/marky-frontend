@@ -15,7 +15,7 @@ export default function TextInput({
         onChange(e.target.value)
     }
   return (
-    <div className='input-cont'>
+    <div className='input-cont'  style={{width}}>
       <div style={{width}} className="input__label">{label}</div>
       <div style={{width }} className="input">
        {icon && <FontAwesomeIcon className='input__icon' icon={icon} />} 

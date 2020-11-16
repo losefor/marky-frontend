@@ -1,17 +1,19 @@
 import React from "react";
 import { useFormikContext } from "formik";
 import TextInput from "../TextInput";
+import View from "../View";
 export default function FormTextInput({ name, label }) {
   const { handleChange, errors, touched, values } = useFormikContext();
   // console.log(values[name])
   return (
-    <div>
+    <View display='flex' flexDirection='column'  style={{width:'300px'}}>
       <TextInput
         error={errors[name]}
         touched={touched[name]}
         label={label}
         value={values[name]}
         onChange={handleChange(name)}
+        width={'300px'}
       />
       {touched[name] && errors[name] && (
         <label
@@ -27,6 +29,6 @@ export default function FormTextInput({ name, label }) {
           {errors[name]}
         </label>
       )}
-    </div>
+    </View>
   );
 }

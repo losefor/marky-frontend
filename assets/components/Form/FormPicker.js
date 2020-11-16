@@ -4,13 +4,9 @@ import Picker from "../Picker";
 
 export default function FormPicker({ items, name, label, textAlign }) {
   const { setFieldValue, errors, touched , values } = useFormikContext();
-  // const [isSelected , setIsSelected] = useState({})
-
- 
   
   return (
-    <div>
-      {/* {console.log(isSelected)} */}
+    <div style={{width:'300px'}}>
       <Picker
         textAlign={textAlign}
         label={label}

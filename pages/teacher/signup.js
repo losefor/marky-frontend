@@ -32,8 +32,8 @@ export default function add() {
   const initialValues = {
     name: "",
     phoneNumber: "",
-    department: "",
-    stage: "",
+    department: "computerScince",
+    stage: 1,
     email: "",
     passwordConfirm: "",
     password: "",
@@ -47,12 +47,12 @@ export default function add() {
     email: Yup.string()
       .email("يرجى التاكد من الايميل")
       .required("الايميل الخاص بالطالب مطلوب"),
-    phoneNumber: Yup.string().min(11).max(11).required("required"),
-    stage: Yup.object().required("stage is required"),
-    department: Yup.object().required("stage is required"),
-    password: Yup.string().required("dsfdf").min(8, "pass must more than 8"),
+    phoneNumber: Yup.string().min(11).max(11).required("رقم الهاتف مطلوب "),
+    stage: Yup.object().required("المرحلة مطلوبة"),
+    department: Yup.object().required("القسم مطلوب"),
+    password: Yup.string().required("الرمز السري مطلوب").min(8, "pass must more than 8"),
     passwordConfirm: Yup.string()
-      .required("sadfdsafdsaf")
+      .required("هذا الحقل مطلوب")
       .min(8, "pass must more than 8"),
   });
 
@@ -126,7 +126,7 @@ export default function add() {
     <div className="center">
       <Alert onClose={alertCloseHandler} open={alert.isOpen} type={alert.color} text={alert.label} />
       <BackButton />
-      <View display="flex" flexDirection="column">
+      <View display="flex" flexDirection="column" alignItems='center'>
         <View mv={5}>
           <Text color="#303030" textAlign="center" fontSize={3}>
             انشاء حساب
@@ -137,11 +137,14 @@ export default function add() {
           initialValues={initialValues}
           onSubmit={submitHandler}
         >
+          {/* <View > */}
+
           <FormTextInput name="name" label="اسم المدرس" />
           <FormTextInput name="email" label="ايميل المدرس" />
           <FormTextInput name="password" label="الرمز السري" />
           <FormTextInput name="passwordConfirm" label="تاكيد الرمز السري" />
           <FormTextInput name="phoneNumber" label="رقم الهاتف" />
+          {/* </View> */}
 
           <FormPicker
             name="department"
