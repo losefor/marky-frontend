@@ -34,8 +34,8 @@ export default function Edit({ response }) {
       .email("يرجى التاكد من الايميل")
       .required("الايميل الخاص بالطالب مطلوب"),
     phoneNumber: Yup.string().min(11).max(11).required("required"),
-    stage: Yup.object().required("stage is required"),
-    department: Yup.object().required("required"),
+    stage: Yup.number().required("stage is required"),
+    department: Yup.string().required("required"),
   });
 
   const handleSubmit =  async (data ) => {
@@ -45,8 +45,8 @@ export default function Edit({ response }) {
       name,
       email,
       phoneNumber,
-      department: department.value,
-      stage: stage.value,
+      department: department,
+      stage: stage,
     });
 
     // console.log(json)

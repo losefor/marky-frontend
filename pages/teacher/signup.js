@@ -48,8 +48,8 @@ export default function add() {
       .email("يرجى التاكد من الايميل")
       .required("الايميل الخاص بالطالب مطلوب"),
     phoneNumber: Yup.string().min(11).max(11).required("رقم الهاتف مطلوب "),
-    stage: Yup.object().required("المرحلة مطلوبة"),
-    department: Yup.object().required("القسم مطلوب"),
+    stage: Yup.number().required("المرحلة مطلوبة"),
+    department: Yup.string().required("القسم مطلوب"),
     password: Yup.string().required("الرمز السري مطلوب").min(8, "pass must more than 8"),
     passwordConfirm: Yup.string()
       .required("هذا الحقل مطلوب")
@@ -73,8 +73,8 @@ export default function add() {
       password,
       passwordConfirm,
       phoneNumber,
-      stage: stage.value,
-      department: department.value,
+      stage: stage,
+      department: department,
     });
     console.log(json);
     const response = await axios.post(`${constants.URL}/signup`, json, {

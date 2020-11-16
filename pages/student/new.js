@@ -33,8 +33,8 @@ export default function add() {
       .email("يرجى التاكد من الايميل")
       .required("الايميل الخاص بالطالب مطلوب"),
     phoneNumber: Yup.string().min(11).max(11).required("رقم الهاتف مطلوب"),
-    stage: Yup.object().required("المرحلة مطلوبة"),
-    department: Yup.object().required("القسم مطلوب"),
+    stage: Yup.number().required("المرحلة مطلوبة"),
+    department: Yup.string().required("القسم مطلوب"),
   });
 
   const handleSubmit = async (data) => {
@@ -43,8 +43,8 @@ export default function add() {
       name,
       email,
       phoneNumber,
-      department: department.value,
-      stage: stage.value,
+      department: department,
+      stage: stage,
     });
     console.log(json);
     try {

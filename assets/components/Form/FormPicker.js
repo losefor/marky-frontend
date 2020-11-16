@@ -12,7 +12,7 @@ export default function FormPicker({ items, name, label, textAlign }) {
         label={label}
         items={items}
         value={values[name]}
-        onChange={(data) => setFieldValue(name, data)}
+        onChange={(data) => setFieldValue(name, data.value)}
       />
       {touched[name] && errors[name] && (
         <label
