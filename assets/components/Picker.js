@@ -11,7 +11,18 @@ export default function Picker({
   textAlign,
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSelected, setIsSelected] = useState(value);
+  const [isSelected, setIsSelected] = useState({});
+
+
+
+  useEffect(()=>{
+
+
+    const item = items.find(data=>(data.value == value))
+    // console.log(item)
+    setIsSelected(item)
+  } , [])
+  
 
   const closeHandler = () => {
     setIsOpen((value) => !value);
@@ -22,7 +33,7 @@ export default function Picker({
     setIsSelected(data);
     onChange(data);
   };
-  console.log(isSelected)
+  console.log(value)
   return (
     <div>
       <div className="picker__label">{label}</div>

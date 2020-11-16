@@ -15,7 +15,7 @@ import Text from "../../assets/components/Text";
 import BackButton from "../../assets/components/BackButton";
 import Alert from "../../assets/components/Alert";
 
-import constants from "../../assets/utils/variables";
+import constants , {departments , stages} from "../../assets/utils/variables";
 
 export default function add() {
 
@@ -170,11 +170,5 @@ export default function add() {
   );
 }
 
-const stages = [
-  { name: "الاولى", value: 1 },
-  { name: "الثانية", value: 2 },
-  { name: "الثالثة", value: 3 },
-  { name: "الرابعة", value: 4 },
-];
 
-const departments = [{ name: "computerScince", value: "computerScince" }];
+

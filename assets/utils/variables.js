@@ -2,6 +2,16 @@ const variables = {
     URL:'https://marky-backend.herokuapp.com'
 }
 
+export const stages = [
+  { name: "الاولى", value: 1 },
+  { name: "الثانية", value: 2 },
+  { name: "الثالثة", value: 3 },
+  { name: "الرابعة", value: 4 },
+  { name: "الخامسة", value: 5 },
+  { name: "السادسة", value: 6 },
+];
+
+
 export const departments = [
     {
       name: "بدون",

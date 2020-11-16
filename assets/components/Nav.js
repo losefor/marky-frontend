@@ -25,17 +25,31 @@ export default function Nav() {
             onClick={() => router.push("/student/new")}
             pv={1}
           />
+
+          <UserItem
+            name="ادارة الطلاب"
+            onClick={() => router.push("/teacher/dashboard")}
+            pv={1}
+          />
+          <UserItem
+            name="ادارة المدرسين"
+            onClick={() => router.push("/teacher/authorization")}
+            pv={1}
+          />
           <UserItem
             name="تسجيل خروج"
-            onClick={() => useLogout(()=>router.push('/'))}
+            onClick={() => useLogout(() => router.push("/"))}
             pv={1}
-
           />
         </View>
       </Modal>
-      <View display="flex" alignItems="center" onClick={()=>router.push('/teacher/dashboard')}>
+      <View
+        display="flex"
+        alignItems="center"
+        onClick={() => router.push("/teacher/dashboard")}
+      >
         <View ph={1}>درجاتي</View>
-        <FontAwesomeIcon color={'#303030'} icon={faEdit} />
+        <FontAwesomeIcon color={"#303030"} icon={faEdit} />
       </View>
     </div>
   );

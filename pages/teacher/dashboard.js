@@ -1,4 +1,3 @@
-import React from "react";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -21,7 +20,7 @@ export default function unauthorized() {
   const [sortByDepartment, setSortByDepartment] = useState("null");
   const [sortByStage, setSortByStage] = useState("null");
   useEffect(() => {
-    console.log(sortByStage, sortByDepartment);
+    // console.log(sortByStage, sortByDepartment);
     axios
       .get(`${constants.URL}/student`, {
         headers: {
@@ -38,7 +37,7 @@ export default function unauthorized() {
         } else {
           setIsAdmin(true);
           setStudents(res.data);
-          console.log(res);
+          // console.log(res);
         }
       });
   }, [sortByDepartment, sortByStage]);

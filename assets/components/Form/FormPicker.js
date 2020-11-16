@@ -4,25 +4,18 @@ import Picker from "../Picker";
 
 export default function FormPicker({ items, name, label, textAlign }) {
   const { setFieldValue, errors, touched , values } = useFormikContext();
-  const [isSelected , setIsSelected] = useState({})
+  // const [isSelected , setIsSelected] = useState({})
 
-  useEffect(()=>{
-    console.log(values[name])
-    console.log(items)
-
-    const item = items.find(data=>(data.value == values[name]))
-    console.log(item)
-    setIsSelected(item)
-  } , [])
-  
+ 
   
   return (
     <div>
+      {/* {console.log(isSelected)} */}
       <Picker
         textAlign={textAlign}
         label={label}
         items={items}
-        value={isSelected}
+        value={values[name]}
         onChange={(data) => setFieldValue(name, data)}
       />
       {touched[name] && errors[name] && (

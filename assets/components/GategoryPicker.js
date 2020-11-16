@@ -20,7 +20,7 @@ export default function Picker({
       return data.value == value;
     });
 
-    console.log(items, item);
+    // console.log(items, item);
 
     setIsSelected(item[0]);
   }, []);
@@ -41,17 +41,18 @@ export default function Picker({
         alignItems="center"
         pv={1}
         flexDirection="row-reverse"
+        // flexWrap='wrap'
       >
         <View ph={1}>
           <Text>{label}</Text>
         </View>
 
         <div
-          style={{ width: "10rem" }}
+          style={{ width: "10rem" , fontSize:'1.1rem' }}
           className="picker"
           onClick={closeHandler}
         >
-          {isSelected ? isSelected.name : "لم يتم التحديد"}
+          {isSelected  ? isSelected.name : "لم يتم التحديد"}
         </div>
       </View>
       <Modal open={isOpen} onClose={closeHandler}>
