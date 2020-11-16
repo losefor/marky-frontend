@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import axios from "axios";
 
 import View from "../../assets/components/View";
+import Text from "../../assets/components/Text";
 import BackButton from "../../assets/components/BackButton";
 import Formik from "../../assets/components/Form/Formik";
 import FormTextInput from "../../assets/components/Form/FormTextInput";
@@ -13,6 +14,7 @@ import StudentScore from "../../assets/components/StudentScore";
 export default function score() {
 
   const [isopen , setIsOpen] = useState(false)
+  const [error , setError] = useState('')
   const [result , setResult] = useState({})
 
   const initialValues = { id: "" };
@@ -25,10 +27,14 @@ export default function score() {
     console.log(response)
     if(response.data.status == 'success'){
 
+      if(response.data.data== null )
+      return setError('الرمز السري الذي ادخلته غير موجود')
+      
       setResult(response.data.data)
       setIsOpen(true)
-    }else{
-      //warning alert
+      setError('')
+
+
     }
   };
 
@@ -47,6 +53,7 @@ export default function score() {
       >
         <View>
           <FormTextInput label="(id)الرمز التعريفي" name="id" />
+         <Text color='tomato' textAlign='right'>{error}</Text>
           <View mv={1}>
             <FormButton rounded color="warning" label="التحقق من النتيجة" />
           </View>
