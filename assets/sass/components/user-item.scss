@@ -5,10 +5,10 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     transition: .3s;
+    // cursor: pointer;
     &:hover{
        color: #ccc;
     }
-    cursor: pointer;
     &__section{
         margin: 0 10px !important;
     }

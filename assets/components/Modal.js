@@ -4,10 +4,10 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 export default function Modal({ children, open, onClose }) {
   return (
     <div
-      className="modal-cont"
-      style={{ display: open ? "flex" : "none" }}
+      onClick={() => onClose()}
+      className={`modal-cont ${open ? "modal-cont--open" : ""}`}
     >
-      <div className={`modal ${open ? "modal--open" : ""}`}>
+      <div onClick={(e)=>e.stopPropagation()} className={`modal ${open ? "modal--open" : ""}`}>
         {onClose ? (
           <FontAwesomeIcon
             onClick={onClose}

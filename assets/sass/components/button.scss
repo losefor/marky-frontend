@@ -1,6 +1,9 @@
 .button{
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
+    // width: 100%;
     padding: 6px 20px;
     border:none;    
     font-size: 1.6rem;
@@ -8,9 +11,6 @@
     font-weight: 500;
     transition: .3s;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     
     &--warning{
         background-color: $color-gold2;

@@ -26,6 +26,8 @@ export default function DoubleSwitch({value=null , onChange}) {
         
     }
     return (
-        <div  onClick={clickHandler} className={`check ${stateHandler(isSuccess)}`} />
+        <div  onClick={clickHandler} className={`check ${stateHandler(isSuccess)}`} >
+            <span >{isSuccess ? 'ناجح' : 'مكمل'}</span>
+        </div>
     )
 }

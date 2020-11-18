@@ -12,14 +12,17 @@ import View from "../../assets/components/View";
 import Nav from "../../assets/components/Nav";
 import GategoryPicker from "../../assets/components/GategoryPicker";
 import Container from "../../assets/components/Container";
+import Spinner from "../../assets/components/Spinner";
 import StudentView from "../../assets/components/StudentView";
 
 export default function unauthorized() {
   const [isAdmin, setIsAdmin] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [students, setStudents] = useState([]);
   const [sortByDepartment, setSortByDepartment] = useState("null");
   const [sortByStage, setSortByStage] = useState("null");
   useEffect(() => {
+    setIsLoading(true)
     // console.log(sortByStage, sortByDepartment);
     axios
       .get(`${constants.URL}/student`, {
@@ -32,6 +35,7 @@ export default function unauthorized() {
         },
       })
       .then((res) => {
+        setIsLoading(false)
         if (res.data.status === "fail") {
           setIsAdmin(false);
         } else {
@@ -68,21 +72,18 @@ export default function unauthorized() {
                 label="القسم"
               />
             </View>
-            <StudentView data={students}  />;
+            <StudentView doubleSwitch data={students}  />;
           </Container>
         );
-      case false:
-        return <Unauth />;
-      default:
-        return (
-          <div className="center">
-            <Text fontSize={1.6}>...جار التحميل</Text>
-          </div>
-        );
-    }
-  };
-  return (
-    <>
+        case false:
+          return <Unauth />;
+          default:
+        return ''
+      }
+    };
+    return (
+      <>
+      <Spinner isLoading={isLoading}/>
       <CondRendering />;
     </>
   );

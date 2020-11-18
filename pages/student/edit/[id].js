@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import {useRouter} from 'next/router'
@@ -7,20 +7,25 @@ import Formik from "../../../assets/components/Form/Formik";
 import FormTextInput from "../../../assets/components/Form/FormTextInput";
 import FormButton from "../../../assets/components/Form/FormButton";
 import FormPicker from "../../../assets/components/Form/FormPicker";
+import FormDoubleSwitch from "../../../assets/components/Form/FormDoubleSwitch";
 
-import View from "../../../assets/components/View";
 import constants, { departments } from "../../../assets/utils/variables";
-import {useGetToken} from '../../../assets/hooks/tokenController'
-export default function Edit({ response }) {
+import {useGetToken} from '../../../assets/hooks/tokenController';
+import View from "../../../assets/components/View";
+import Spinner from "../../../assets/components/Spinner";
+import BackButton from "../../../assets/components/BackButton";
 
+export default function Edit({ response }) {
+  const [isLoading , setIsLoading] = useState(false)
   const router = useRouter()
-  const { name, email, phoneNumber, department, stage , _id } = response.data.data;
+  const { name, email, phoneNumber, department, stage , _id , isSuccess } = response.data.data;
   const initialValues = {
     name,
     email,
     phoneNumber,
     department,
     stage,
+    isSuccess
   };
 
   console.log(initialValues);
@@ -33,23 +38,26 @@ export default function Edit({ response }) {
     email: Yup.string()
       .email("يرجى التاكد من الايميل")
       .required("الايميل الخاص بالطالب مطلوب"),
-    phoneNumber: Yup.string().min(11).max(11).required("required"),
-    stage: Yup.number().required("stage is required"),
-    department: Yup.string().required("required"),
+    phoneNumber: Yup.string().min(11).max(11).required("رقم الهاتف مطلوب"),
+    stage: Yup.number().required("المرحلة مطلوبة"),
+    department: Yup.string().required("القسم مطلوب"),
+    isSuccess: Yup.boolean().required("حالة الطالب مطلوبة")
   });
 
   const handleSubmit =  async (data ) => {
-    const { name, email, phoneNumber, department, stage } = data;
+    setIsLoading(true)
+    const { name, email, phoneNumber, department, stage , isSuccess } = data;
     console.log(data)
     const json = JSON.stringify({
       name,
       email,
       phoneNumber,
-      department: department,
-      stage: stage,
+      department,
+      stage,
+      isSuccess
     });
 
-    // console.log(json)
+    console.log(json)
 
      const response = await axios.patch(`${constants.URL}/student/${_id}`, json, {
        headers: {
@@ -69,14 +77,15 @@ export default function Edit({ response }) {
   };
 
 
-  return (
+  return (<>
+  <BackButton/>
     <div className="center">
       <View display="flex" flexDirection="column">
         <Formik
           validationSchema={validationSchema}
           initialValues={initialValues}
           onSubmit={handleSubmit}
-        >
+          >
           <FormTextInput name="name" label="اسم الطالب" />
           <FormTextInput name="email" label="ايميل الطالب" />
           <FormTextInput name="phoneNumber" label="رقم الهاتف" />
@@ -84,16 +93,14 @@ export default function Edit({ response }) {
             name="department"
             label="القسم"
             items={departments}
-            value={departments[0]}
-          />
+            />
           <FormPicker
             name="stage"
             label="المرحلة"
             items={stages}
-            value={stages[0]}
-          />
+            />
           <View display="flex" justifyContent="flex-end" mv={1}>
-            {/* <FormDoubleSwitch name='isSuccess' label="حالة الطالب"/> */}
+            <FormDoubleSwitch name='isSuccess' label="حالة الطالب"/>
           </View>
 
           <View mv={2}>
@@ -102,6 +109,8 @@ export default function Edit({ response }) {
         </Formik>
       </View>
     </div>
+    <Spinner isLoading={isLoading}/>
+            </>
   );
 }
 
@@ -116,7 +125,7 @@ export async function getServerSideProps(context) {
   const response = await axios.get(
     `${constants.URL}/student/${context.query.id}`
   );
-  console.log(response.data);
+  // console.log(response.data);
   return {
     props: {
       response: {

@@ -13,12 +13,15 @@ import View from "../../assets/components/View";
 import Text from "../../assets/components/Text";
 import BackButton from "../../assets/components/BackButton";
 import Alert from "../../assets/components/Alert";
+import Spinner from "../../assets/components/Spinner";
 
 import constants from "../../assets/utils/variables";
+import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
 
 export default function add() {
 
   const router = useRouter()
+  const [isLoading , setIsLoading] = useState(false)
   const [alert, setAlert] = useState({
     isOpen: false,
     color: "danger",
@@ -38,6 +41,7 @@ export default function add() {
   });
 
   const submitHandler = async (data) => {
+    setIsLoading(true)
     const json = JSON.stringify(data);
     console.log(json)
     const response = await axios.post(`${constants.URL}/login`, json, {
@@ -45,7 +49,7 @@ export default function add() {
         "Content-Type":"application/json"
       }
     });
-
+    setIsLoading(false)
     console.log(response.data)
     if(response.data.status == 'fail'){
       switch(response.data.message){
@@ -114,6 +118,7 @@ export default function add() {
           <Text textAlign="right">
             ليس لديك حساب ؟<Link href="./signup">انشا حساب</Link>
           </Text>
+          <Spinner isLoading={isLoading} />
         </Formik>
       </View>
     </div>

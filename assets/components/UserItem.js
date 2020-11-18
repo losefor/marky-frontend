@@ -1,10 +1,11 @@
 import React from "react";
-import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import View from "../components/View";
 import Text from "../components/Text";
 import Avatar from "../components/Avatar";
 import DoubleSwitch from "../components/DoubleSwitch";
+import Switch from "../components/Switch";
 
 export default function UserItem({
   onChange,
@@ -15,10 +16,11 @@ export default function UserItem({
   ph,
   textAlign,
   isSuccess,
-  // data
+  doubleSwitch,
+  color
 }) {
   return (
-    <div className="user" >
+    <div className="user">
       <View
         className="user__section"
         display="flex"
@@ -27,20 +29,23 @@ export default function UserItem({
       >
         {icon ? (
           <View mh={1}>
-            <Avatar icon={icon} radius={3} />
+            <FontAwesomeIcon icon={icon} color={color} />
           </View>
         ) : null}
 
         <View pv={pv} ph={ph} onClick={onClick}>
-          <Text textAlign={textAlign} Component="p" fontSize={1.6}>
+          <Text color={color} textAlign={textAlign} Component="p" fontSize={1.6}>
             {name}
           </Text>
         </View>
       </View>
-      {/* {console.log(isSuccess)} */}
       {onChange ? (
         <View className="user__section " pv={1}>
-          <DoubleSwitch value={isSuccess} onChange={onChange} />
+          {doubleSwitch ? (
+            <DoubleSwitch value={isSuccess} onChange={onChange} />
+          ) : (
+            <Switch value={isSuccess} onChange={onChange} />
+          )}
         </View>
       ) : null}
     </div>

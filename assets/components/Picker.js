@@ -46,6 +46,7 @@ export default function Picker({
             <UserItem
               textAlign={textAlign}
               pv={1}
+              ph={5}
               key={index}
               name={data.name}
               onClick={()=>selectHandler(data)}
