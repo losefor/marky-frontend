@@ -3,7 +3,11 @@ import { useState } from "react";
 export default function DoubleSwitch({ value = null, onChange }) {
   const [isSuccess, setIsSuccess] = useState(value)
   const clickHandler = () => {
-    setIsSuccess((value) => !value);
+    setIsSuccess((value) => {
+      onChange(!value)
+      return !value
+    });
+    
   };
   return (
     <div

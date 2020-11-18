@@ -56,12 +56,12 @@ export default function authorization() {
     <div>
       <Spinner isLoading={isLoading} />
       <Nav />
-      <CondRenderer isLoading={isLoading} teachers={teachers} />
+      <CondRenderer changeHandler={changeHandler} isLoading={isLoading} teachers={teachers} />
     </div>
   );
 }
 
-const CondRenderer = ({ isLoading, teachers }) => {
+const CondRenderer = ({ isLoading, teachers , changeHandler }) => {
   switch (isLoading) {
     case null:
       return (

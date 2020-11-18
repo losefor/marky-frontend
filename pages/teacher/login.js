@@ -108,8 +108,8 @@ export default function add() {
           initialValues={initialValues}
           onSubmit={submitHandler}
         >
-          <FormTextInput name="email" label="ايميل المدرس" />
-          <FormTextInput name="password" label="الرمز السري" />
+          <FormTextInput type='email' name="email" label="ايميل المدرس" />
+          <FormTextInput type='password' name="password" label="الرمز السري" />
 
           <View mv={2}>
             <FormButton label="تسجيل الدخول" color="warning" rounded />
